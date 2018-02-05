@@ -7,6 +7,8 @@
     initialize() {
       _.bindAll(this, 'render', 'otherMethod');
 
+      console.log('this.options:', this.options);
+
       this.render();
     },
 
@@ -22,6 +24,12 @@
 
   var listView = new ListView({ prop1: 'prop1' });
 
-  console.log(listView);
+  console.log('listView:', listView);
+  console.log('ListView:', ListView);
+  console.log(
+    'Backbone.View.extend:',
+    Backbone.View.extend
+  );
+
 
 }(jQuery));
