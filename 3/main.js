@@ -43,11 +43,17 @@ var ListView = Backbone.View.extend({
   },
 
   updateFromPersistance() {
-    if (!window.localStorage['hello-backbone-3-collection']) {
-      window.localStorage['hello-backbone-3-collection'] = JSON.stringify([]);
+    var storage = window.localStorage['hello-backbone-3-collection'];
+
+    if (!storage) {
+      window.localStorage['hello-backbone-3-collection'] = JSON.stringify({
+        collection: [],
+        counter: 0
+      });
     } else {
-      var storage = JSON.parse(window.localStorage['hello-backbone-3-collection']);
-      storage.forEach((item) => {
+      var parsedStorage = JSON.parse(storage);
+      this.counter = parsedStorage.counter;
+      parsedStorage.collection.forEach((item) => {
         this.collection.add(item);
       });
     }
@@ -70,7 +76,8 @@ var ListView = Backbone.View.extend({
 
   updatePersistanceOnAdd(item) {
     var storage = JSON.parse(window.localStorage['hello-backbone-3-collection']);
-    storage.push(item);
+    storage.collection.push(item);
+    storage.counter = this.counter;
     window.localStorage['hello-backbone-3-collection'] = JSON.stringify(storage);
   },
 
