@@ -21,7 +21,6 @@
     }
   });
 
-
   var listView = new ListView({ prop1: 'prop1' });
 
   console.log('listView:', listView);

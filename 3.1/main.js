@@ -87,7 +87,7 @@ const FormGroupView = Backbone.View.extend({
       content: $(`#input-${this.formGroupName}`).val()
     });
 
-      this.collection.add(newItem);
+    this.collection.add(newItem);
   }
 });
 
@@ -103,3 +103,18 @@ const fruitListView = new ListView({
   collection: fruitList,
   listName: 'fruit'
 });
+
+// TODO: add support for multiple sets of forms and lists
+// right now it breaks
+// const veggieList = new List();
+//
+// const veggieFormGroupView = new FormGroupView({
+//   formGroupName: 'veggie',
+//   inputLabel: 'add a veggie',
+//   collection: veggieList
+// });
+//
+// const veggieListView = new ListView({
+//   collection: veggieList,
+//   listName: 'veggie'
+// });
